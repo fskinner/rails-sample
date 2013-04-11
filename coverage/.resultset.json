@@ -1,0 +1,84 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/user.rb": [
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/console.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/deliverer.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/devolution.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/game.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/gender.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/payment.rb": [
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/price_increment.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/price_range.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/fskinner/Sites/ProjetoFinal/AlugSeguro/app/models/rent.rb": [
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1365557006
+  }
+}

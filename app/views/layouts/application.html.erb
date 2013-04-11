@@ -1,0 +1,77 @@
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>AlugSeguro</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="header">
+		<div id="left_header">
+			<!-- <%= link_to image_tag("logotipo.png"), root_url %> -->
+		</div>
+		<div id="right_header">
+			<% if user_signed_in? %>
+          <h3><%="Olá, #{current_user.name}" %></h3>
+      <% else %>
+          <h3>Seja bem vindo! <%= link_to 'Faca seu login', new_user_session_path %></h3>
+      <% end %>
+			<input type="text" id="textfield_procuraJogo" name="procuraJogo" placeholder="Digite o nome do jogo..." />
+			<input type="submit" id="button_procurar" value="Procurar" class="default_button" />
+		</div>
+	</div>
+	
+  <div id="menu">
+		<ul>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'Home', root_url %></li>
+
+			<!-- <li><%= link_to 'Usuarios', users_path %></li>
+				<% Console.all.each do |console| %>
+					<li><%= link_to console.name,  console %></li>
+				<% end %> -->
+			<!-- <li><a href="#">Forum</a></li> -->
+			
+		</ul>
+	</div>
+
+  <div id="content">
+    <div id="central_content">
+      <div id="top_central_content">
+        <% if user_signed_in? %>
+          <div id="sub_menu">
+            <!-- <ul>
+              <li><%= link_to "Perfil", current_user %></li>
+              <% if current_user.name == "admin" %>
+                <li><%= link_to "Trocas", trades_path %></li>
+                <li><%= link_to "Compras", sales_path %></li>
+              <% else %>
+                <li><%= link_to "Meus Jogos", games_path %></li>
+                <li><%= link_to "Propostas", trades_path %></li>
+                <li><%= link_to "Mensagens", messages_path %></li>
+              <% end %>
+              <li><%= link_to "Sair", destroy_user_session_url, method: :delete %></li>
+            </ul> -->
+          </div>
+        <% else %>
+
+        <% end %>
+      </div>
+      
+      <div id="middle_central_content">
+          <%= yield %>
+      </div>  
+    </div>
+  </div>
+  <!-- <div id="footer">
+		<h4>Todos os Direitos Reservados</h4>
+	</div> -->
+</body>
+</html>
