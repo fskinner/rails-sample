@@ -1,0 +1,16 @@
+<h3><%= "Lista de todos os consoles" %></h3>
+
+<% if @consoles.empty? %>
+	<p><b>Não há nenhum console cadastrado no site</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Nome</th>
+
+		<% @consoles.each do |console| %> 
+			<tr>
+				<td><%= console.name %></td>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

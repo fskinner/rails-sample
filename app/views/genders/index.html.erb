@@ -1,0 +1,16 @@
+<h3><%= "Lista de todos os generos" %></h3>
+
+<% if @genders.empty? %>
+	<p><b>Não há nenhum genero cadastrado no site</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Nome</th>
+
+		<% @genders.each do |gender| %> 
+			<tr>
+				<td><%= gender.name %></td>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

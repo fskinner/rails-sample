@@ -1,0 +1,47 @@
+<h3>Seja Bem vindo ao AlugSeguro</h3>
+
+<div id="content_form_new">
+	<%= form_for (@user) do |f| %>
+	
+		<h3>Dados Cadastrais</h3>
+
+	    <% if @user.errors.any? %>
+	      <p><i><font color="red"><%= @user.errors.full_messages.first %></font></i></p>
+	    <% end %>
+    
+		<div class="field_form">
+			<label>Nome: </label>
+			<%= f.text_field :name %>
+		</div>
+		<div class="field_form">
+			<label>Email: </label>
+			<%= f.text_field :email %>
+		</div>
+		<div class="field_form">
+			<label>Senha: </label>
+			<%= f.password_field :password %>
+		</div>
+		<div class="field_form">
+			<label>Confirmar senha: </label>
+			<%= f.password_field :password_confirmation %>
+		</div>
+		<div class="field_form">
+			<label>Rua: </label>
+			<%= f.text_field :street %>
+		</div>
+		<div class="field_form">
+			<label>Cidade: </label>
+			<%= f.text_field :city %>
+		</div>
+		<div class="field_form">
+			<label>CEP: </label>
+			<%= f.text_field :zipcode %>
+		</div>
+		<div class="field_form">
+			<label>Estado: </label>
+			<%= f.text_field :state %>
+		</div>
+		<input type="submit" value="Cadastrar" id="buttom_submit"/>
+		<input type="reset" value="Limpar" id="buttom_reset" />
+	<% end %>
+</div>

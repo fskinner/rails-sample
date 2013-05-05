@@ -108,22 +108,21 @@ body {
 	background-color: #E6E3E3;
 }
 
-#sub_menu ul {
+#top_central_content ul {
 	list-style: none;
 }
 
-#sub_menu li {
+#top_central_content li {
 	display: inline;
 	margin-right: 65px;
 	margin-left: 65px;
 }
 
-#sub_menu a {
+#top_central_content a {
 	text-decoration: none;
 	color: black;
 	font-size: 15px;
 	font-weight: bold;
-	line-height: 35px;
 }
 
 #content {
@@ -146,6 +145,12 @@ body {
 #middle_central_content {
 	text-align: center;
 	margin-top: 25px;
+	height: 310px;
+	overflow: scroll;
+	width: 450px;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
 }
 
 #top_central_content {

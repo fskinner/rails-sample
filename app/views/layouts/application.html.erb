@@ -14,7 +14,7 @@
 		</div>
 		<div id="right_header">
 			<% if user_signed_in? %>
-          <h3><%="Olá, #{current_user.name}" %></h3>
+          <h3><%="Olá, #{current_user.name}. Você possui #{current_user.shopcredit.to_i} ShopCredits" %></h3>
       <% else %>
           <h3>Seja bem vindo! <%= link_to 'Faca seu login', new_user_session_path %></h3>
       <% end %>
@@ -25,42 +25,37 @@
 	
   <div id="menu">
 		<ul>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Home', root_url %></li>
-			
+      <% if user_signed_in? %>
+        <li><%= link_to 'Home', root_url %></li>
+        <li><%= link_to 'Jogos', games_path %></li>
+        <li><%= link_to 'Consoles', consoles_path %></li>
+        <li><%= link_to 'Generos', genders_path %></li>
+        <li><%= link_to 'Meus Alugueis', rents_path %></li>
+        <li><%= link_to 'Historico', histories_path %></li>
+
+      <% else %>
+        <li><%= link_to 'Home', root_url %></li>
+      <% end %>
 		</ul>
 	</div>
 
   <div id="content">
     <div id="central_content">
-      <div id="top_central_content">
-        <% if user_signed_in? %>
-          <div id="sub_menu">
-            <!-- <ul>
-              <li><%= link_to "Perfil", current_user %></li>
-              <% if current_user.name == "admin" %>
-                <li><%= link_to "Trocas", trades_path %></li>
-                <li><%= link_to "Compras", sales_path %></li>
-              <% else %>
-                <li><%= link_to "Meus Jogos", games_path %></li>
-                <li><%= link_to "Propostas", trades_path %></li>
-                <li><%= link_to "Mensagens", messages_path %></li>
-              <% end %>
-              <li><%= link_to "Sair", destroy_user_session_url, method: :delete %></li>
-            </ul> -->
-          </div>
-        <% else %>
+      <% if user_signed_in? %>
+        <div id="top_central_content">
+              <ul>
+                <!-- <li><%= link_to "Perfil", current_user %></li> -->
+                <% Console.all.each do |console| %>
+                  <li><%= link_to console.name,  console %></li>
+                <% end %>
+                <!-- <li><%= link_to "Sair", destroy_user_session_url, method: :delete %></li> -->
+              </ul>
+        </div>
+      <% else %>
 
-        <% end %>
-      </div>
-      
+      <% end %>
       <div id="middle_central_content">
-          <%= yield %>
+        <%= yield %>
       </div>  
     </div>
   </div>

@@ -1,0 +1,8 @@
+<h2> Bem vindo ao AlugSeguro </h2>
+
+<% if user_signed_in? %>
+<% else %>
+	<%= link_to "Cadastre-se", new_user_url %>
+	ou
+	<%= link_to "Faça login", new_user_session_path %>
+<% end %>

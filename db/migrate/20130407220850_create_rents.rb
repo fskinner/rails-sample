@@ -4,6 +4,7 @@ class CreateRents < ActiveRecord::Migration
       t.datetime :date
       t.float :initial_value
       t.references :user
+      t.references :game
 
       t.timestamps
     end

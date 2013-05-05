@@ -1,0 +1,25 @@
+<h3><%= "Lista dos meus alugueis" %></h3>
+
+<% if @rents.empty? %>
+	<p><b>Voce nunca alugou um jogo.</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Jogo</th>
+		<th>Alugado em</th>
+		<th>Devolvido?</th>
+
+		<% @rents.each do |rent| %> 
+			<tr>
+				<td><%= rent.game.name %></td>
+				<td><%= rent.date.strftime("%m/%d/%Y") %></td>
+				<% if rent.devolution %>
+					<td>Sim</td>
+				<% else %>
+					<td>Nao</td>
+					<td><%= link_to "Devolver", return_game_rent_url(rent), method: 'put'%></td>
+				<% end %>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

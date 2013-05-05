@@ -1,4 +1,5 @@
 class Devolution < ActiveRecord::Base
+	belongs_to :rent
+	
 	validates :date, :presence => true
-	validates :midia_status, :presence => true
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407230118) do
+ActiveRecord::Schema.define(:version => 20130502011210) do
 
   create_table "consoles", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130407230118) do
 
   create_table "deliverers", :force => true do |t|
     t.datetime "date"
+    t.integer  "rent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -28,12 +29,14 @@ ActiveRecord::Schema.define(:version => 20130407230118) do
   create_table "devolutions", :force => true do |t|
     t.datetime "date"
     t.integer  "midia_status"
+    t.integer  "rent_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
   create_table "games", :force => true do |t|
     t.string   "name"
+    t.boolean  "available"
     t.integer  "console_id"
     t.integer  "gender_id"
     t.integer  "price_range_id"
@@ -49,6 +52,18 @@ ActiveRecord::Schema.define(:version => 20130407230118) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "histories", :force => true do |t|
+    t.float    "value"
+    t.string   "transaction_type"
+    t.string   "message"
+    t.integer  "rent_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "histories", ["rent_id"], :name => "index_histories_on_rent_id"
+
   create_table "payments", :force => true do |t|
     t.datetime "date"
     t.integer  "type"
@@ -58,24 +73,20 @@ ActiveRecord::Schema.define(:version => 20130407230118) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "price_increments", :force => true do |t|
-    t.float    "value"
-    t.integer  "price_range_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
   create_table "price_ranges", :force => true do |t|
     t.float    "price"
+    t.float    "increment_value"
+    t.integer  "periodicity"
     t.string   "category"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "rents", :force => true do |t|
     t.datetime "date"
     t.float    "initial_value"
     t.integer  "user_id"
+    t.integer  "game_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -89,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130407230118) do
     t.string   "bank"
     t.string   "agency"
     t.string   "account"
+    t.integer  "shopcredit"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false

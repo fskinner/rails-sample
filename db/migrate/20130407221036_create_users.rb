@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :bank
       t.string :agency
       t.string :account
+      t.integer :shopcredit
 
       t.timestamps
     end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: 1.5
+  transaction_type: MyString
+  message: MyString
+  rent: 
+
+two:
+  value: 1.5
+  transaction_type: MyString
+  message: MyString
+  rent: 
