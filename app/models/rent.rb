@@ -43,7 +43,8 @@ class Rent < ActiveRecord::Base
 	end
 
 	def self.calculate_rent_duration start_date, end_date
-		((end_date - start_date) / 3600 / 24 / 7).to_i
+		weeks = ((end_date.to_i - start_date.to_i) / 3600 / 24 / 7)
+		weeks
 	end
 
 end
