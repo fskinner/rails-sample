@@ -7,7 +7,7 @@ class RentsController < ApplicationController
 
 	def return_game
 		@rent = Rent.find params[:id]
-		@rent.return_game
+		@rent.return_game current_user
 		redirect_to rents_url
 	end
 	

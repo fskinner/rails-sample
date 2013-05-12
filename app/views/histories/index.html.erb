@@ -1,0 +1,27 @@
+<h3><%= "Meu historico" %></h3>
+
+<% if @histories.empty? %>
+	<p><b>Ainda não houve nenhuma transação</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Valor</th>
+		<th>Descricao</th>
+		<th>Jogo</th>
+
+		<% @histories.each do |history| %> 
+			<% 
+				if history.transaction_type == "Credit" 
+					signal = "+"
+				else
+					signal = "-"
+				end
+			%>
+			<tr>
+				<td><%= "#{signal} #{history.value}0" %></td>
+				<td><%= history.message %></td>
+				<td><%= history.rent.game.name if history.rent %></td>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

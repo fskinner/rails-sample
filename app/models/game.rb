@@ -7,10 +7,14 @@ class Game < ActiveRecord::Base
 	validates :name, :presence => true
 
 	def rent_credit user
+		return false unless user.shopcredit
 		if user.shopcredit >= self.price_range.price
 			Rent.rent_game self, user
 			self.available = false
-			self.save
+			if self.save
+				user.shopcredit -= self.price_range.price.to_i
+				user.save
+			end
 		else
 			false
 		end

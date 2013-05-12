@@ -16,6 +16,5 @@ class User < ActiveRecord::Base
 	validates :city, :presence => true
 	validates :state, :presence => true
 	validates :zipcode, :presence => true
-	validates :password, :presence => true
 
 end

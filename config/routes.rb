@@ -18,33 +18,13 @@ AlugSeguro::Application.routes.draw do
   
   resources :genders
 
+  resources :histories
+
   resources :rents do
     member do
       put 'return_game'
     end
   end
-
-  resource :histories
-
-  # resources :sales do
-  #   member do
-  #     put 'confirm'
-  #   end
-  # end
-
-  # resources :trades do
-  #   member do
-  #     put 'accept'
-  #     put 'decline'
-  #   end
-  # end
-
-  # resources :announcements do
-  #   member do
-  #     put 'buy'
-  #     put 'swap'
-  #   end
-  # end
 
   root to: 'pages#index'
 

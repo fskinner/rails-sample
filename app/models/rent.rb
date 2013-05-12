@@ -12,17 +12,19 @@ class Rent < ActiveRecord::Base
 	def self.rent_game game, user
 		rent = Rent.create date: DateTime.now, initial_value: game.price_range.price, game_id: game.id, user_id: user.id
 		Deliverer.create date: DateTime.now + 1.day, rent_id: rent.id
-		History.create value: game.price_range.price, transaction_type: "Debt", message: "referente ao aluguel do jogo", rent_id: rent.id
+		History.create value: game.price_range.price, transaction_type: "Debt", message: "referente ao aluguel do jogo", rent_id: rent.id, user_id: user.id
 		rent
 	end
 
-	def return_game
+	def return_game user
 		Devolution.create date: DateTime.now, rent_id: self.id
 		self.game.available = true
 		self.game.save
 		weeks = Rent.calculate_rent_duration(self.date, DateTime.now)
 		value = Rent.return_exchange(weeks, self.game.price_range)
-		History.create value: 10, transaction_type: "Credit", message: "referente a devolucao do jogo", rent_id: self.id
+		History.create value: value, transaction_type: "Credit", message: "referente a devolucao do jogo", rent_id: self.id, user_id: user.id
+		user.shopcredit += value.to_i
+		user.save
 		self
 	end
 

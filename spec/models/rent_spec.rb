@@ -36,19 +36,20 @@ describe Rent do
     context 'given a game' do
 
       target_rent = FactoryGirl.create :rent
+      user = FactoryGirl.create :user
 
       it 'should create a new devolution' do
-        target_rent.return_game
+        target_rent.return_game user
         target_rent.devolution.should_not be_nil
       end
 
       it 'should set game availability to true' do
-        target_rent.return_game
+        target_rent.return_game user
         target_rent.game.available.should be_true
       end
 
       it 'should have a history register added' do
-        target_rent.return_game
+        target_rent.return_game user
         target_rent.history.should_not be_nil
       end
 

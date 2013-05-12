@@ -8,8 +8,7 @@ Console: <%= @game.console.name if @game.console %>
 
 <h3> Preço </h3>
 
-<%= "R$#{@game.price_range.price}0 ou #{@game.price_range.price.to_i * 10} ShopCredits"%> </br></br></br>
+<%= "R$#{@game.price_range.price}0 ou #{@game.price_range.price.to_i} ShopCredits"%> </br></br></br>
 
 <%= link_to "Pagar com dinheiro", rent_money_game_url(@game), method: 'put' %> </br></br>
 <%= link_to "Pagar com shopcredit", rent_credit_game_url(@game), method: 'put' %>
-
