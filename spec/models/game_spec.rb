@@ -7,7 +7,6 @@ describe Game do
   it { should validate_presence_of :name }
 
 
-
   describe '#rent_credit' do
     context 'given not enough credits' do
 

@@ -3,6 +3,5 @@ class PriceRange < ActiveRecord::Base
 	
 	validates :price, :presence => true
 	validates :increment_value, :presence => true
-	validates :periodicity, :presence => true
 	validates :category, :presence => true
 end

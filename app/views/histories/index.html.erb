@@ -8,6 +8,7 @@
 		<th>Valor</th>
 		<th>Descricao</th>
 		<th>Jogo</th>
+		<th>Identificador</th>
 
 		<% @histories.each do |history| %> 
 			<% 
@@ -21,6 +22,7 @@
 				<td><%= "#{signal} #{history.value}0" %></td>
 				<td><%= history.message %></td>
 				<td><%= history.rent.game.name if history.rent %></td>
+				<td><%= history.rent.game.identifier if history.rent %></td>
 		    </tr>
 		<% end %>
 	</table>

@@ -6,6 +6,12 @@ class Game < ActiveRecord::Base
 	
 	validates :name, :presence => true
 
+	before_save :generate_identifier
+
+	def generate_identifier
+		self.identifier = Digest::MD5.hexdigest("#{self.name}#{DateTime.now}")
+	end
+
 	def rent_credit user
 		return false unless user.shopcredit
 		if user.shopcredit >= self.price_range.price

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
   create_table "games", :force => true do |t|
     t.string   "name"
     t.boolean  "available"
+    t.string   "identifier"
     t.integer  "console_id"
     t.integer  "gender_id"
     t.integer  "price_range_id"
@@ -76,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
   create_table "price_ranges", :force => true do |t|
     t.float    "price"
     t.float    "increment_value"
-    t.integer  "periodicity"
     t.string   "category"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

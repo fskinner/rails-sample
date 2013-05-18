@@ -56,4 +56,49 @@ describe Rent do
     end
   end
 
+  describe '#calculate_rent_duration' do
+    context 'given starting and ending dates' do
+
+      start_date = DateTime.now
+      end_date = DateTime.now + 1.week
+
+      it 'should return 4 days' do
+        days = Rent.calculate_rent_duration start_date, end_date
+        days.should be_equal 8
+      end
+
+      it 'should return 0 days' do
+        days = Rent.calculate_rent_duration end_date, start_date
+        days.should be_equal 0
+      end
+
+    end
+  end
+
+  describe '#return_exchange' do
+    context 'given starting and ending dates' do
+
+      days = 1
+
+      it 'should return 130' do
+        price_range = FactoryGirl.create :price_range, increment_value: 10, price: 150
+        price = Rent.return_exchange days, price_range
+        price.to_i.should be_equal 140
+      end
+
+      it 'should return 0' do
+        price_range = FactoryGirl.create :price_range, increment_value: 160, price: 150
+        price = Rent.return_exchange days, price_range
+        price.to_i.should be_equal 0
+      end
+
+      it 'should return 140 weeks' do
+        price_range = FactoryGirl.create :price_range, increment_value: 10, price: 150
+        price = Rent.return_exchange 0, price_range
+        price.to_i.should be_equal 150
+      end
+
+    end
+  end
+
 end
