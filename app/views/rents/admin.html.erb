@@ -1,0 +1,19 @@
+<h3><%= "Lista dos alugueis pendentes" %></h3>
+
+<% if @rents.empty? %>
+	<p><b>Nenhum aluguel pendente.</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Jogo</th>
+		<th>Requisitado em</th>
+
+		<% @rents.each do |rent| %> 
+			<tr>
+				<td><%= rent.game.name %></td>
+				<td><%= rent.created_at.strftime("%m/%d/%Y") %></td>
+				<td><%= link_to "Enviar jogo", accept_rent_rent_url(rent), method: 'put'%></td>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

@@ -1,0 +1,19 @@
+<h3><%= "Lista das devolucoes pendentes" %></h3>
+
+<% if @devolutions.empty? %>
+	<p><b>Nenhuma devolucao pendente.</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Jogo</th>
+		<th>Requisitado em</th>
+
+		<% @devolutions.each do |devolution| %> 
+			<tr>
+				<td><%= devolution.rent.game.name %></td>
+				<td><%= devolution.created_at.strftime("%m/%d/%Y") %></td>
+				<td><%= link_to "Buscar jogo", confirm_devolution_rent_url(devolution.rent_id), method: 'put'%></td>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

@@ -7,23 +7,27 @@ class Rent < ActiveRecord::Base
 	has_one :history
 
 	validates :initial_value, :presence => true
-	validates :date, :presence => true
 
-	def self.rent_game game, user
-		rent = Rent.create date: DateTime.now, initial_value: game.price_range.price, game_id: game.id, user_id: user.id
-		Deliverer.create date: DateTime.now + 1.day, rent_id: rent.id
-		History.create value: game.price_range.price, transaction_type: "Debt", message: "aluguel", rent_id: rent.id, user_id: user.id
+	def self.request_rent game, user, currency
+		rent = Rent.create initial_value: game.price_range.price, game_id: game.id, user_id: user.id
+		History.create value: game.price_range.price, transaction_type: "Debt", message: "aluguel", currency: currency, rent_id: rent.id, user_id: user.id
 		rent
 	end
 
-	def return_game user
-		Devolution.create date: DateTime.now, rent_id: self.id
-		self.game.available = true
-		self.game.save
-		days = Rent.calculate_rent_duration(self.date, DateTime.now)
-		value = Rent.return_exchange(days, self.game.price_range)
-		History.create value: value, transaction_type: "Credit", message: "devolucao", rent_id: self.id, user_id: user.id
-		user.shopcredit += value.to_i
+	def accept_rent
+		Deliverer.create date: DateTime.now, rent_id: self.id
+		self.date = DateTime.now
+		self.save
+		self
+	end
+
+	def request_return user
+		Devolution.create rent_id: self.id
+		days = Rent.calculate_rent_duration self.date, DateTime.now
+		value = Rent.return_exchange days, self.game.price_range
+		History.create value: value, transaction_type: "Credit", message: "devolucao", currency: "credits", rent_id: self.id, user_id: user.id
+		user.shopcredit = user.shopcredit + value.to_i
+		p user.shopcredit
 		user.save
 		self
 	end

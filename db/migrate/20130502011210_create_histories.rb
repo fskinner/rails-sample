@@ -4,6 +4,7 @@ class CreateHistories < ActiveRecord::Migration
       t.float :value
       t.string :transaction_type
       t.string :message
+      t.string :currency
       t.references :rent
       t.references :user
 

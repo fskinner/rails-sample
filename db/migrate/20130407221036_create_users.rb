@@ -9,7 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :bank
       t.string :agency
       t.string :account
-      t.integer :shopcredit
+      t.string :role
+      t.integer :shopcredit, :default => 0
 
       t.timestamps
     end

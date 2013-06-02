@@ -35,3 +35,5 @@ Game.create name: "Wiininja", console: wii, gender: action, available: true, pri
 Game.create name: "Uncharted", console: ps3, gender: shooter, available: true, price_range: price2
 Game.create name: "Gears of War", console: xbox, gender: shooter, available: true, price_range: price1
 Game.create name: "Wii Shooter", console: wii, gender: shooter, available: false, price_range: price3
+
+User.create name: "Admin", email: "admin@admin.com", password: "123123", street: "admin", city: "admin", state: "admin", zipcode: "admin", role: "admin"

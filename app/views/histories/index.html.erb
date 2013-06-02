@@ -5,21 +5,33 @@
 
 <% else %>
 	<table class="table_game">
+		<th>Moeda</th>
 		<th>Valor</th>
 		<th>Descricao</th>
 		<th>Jogo</th>
 		<th>Identificador</th>
 
 		<% @histories.each do |history| %> 
-			<% 
-				if history.transaction_type == "Credit" 
-					signal = "+"
-				else
-					signal = "-"
-				end
-			%>
 			<tr>
-				<td><%= "#{signal} #{history.value}0" %></td>
+				<% 
+					if history.currency == "money" 
+						currency = "R$"
+					else
+						currency = "SC"
+					end
+				%>
+				<td><%= "#{currency}" %></td>
+
+				<% 
+					if history.transaction_type == "Credit" 
+						signal = "+"
+					else
+						signal = "-"
+					end
+				%>
+				<td><%= "#{signal}#{history.value.to_i}" %></td>
+				
+				
 				<td><%= history.message %></td>
 				<td><%= history.rent.game.name if history.rent %></td>
 				<td><%= history.rent.game.identifier if history.rent %></td>

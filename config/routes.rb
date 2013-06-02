@@ -23,6 +23,12 @@ AlugSeguro::Application.routes.draw do
   resources :rents do
     member do
       put 'return_game'
+      put 'confirm_devolution'
+      put 'accept_rent'
+    end
+    collection do
+      get 'admin'
+      get 'devolution'
     end
   end
 

@@ -6,7 +6,6 @@ describe Rent do
   subject { FactoryGirl.create :rent }
 
   it { should validate_presence_of :initial_value }
-  it { should validate_presence_of :date }
 
   describe '#rent_game' do
     context 'given a game' do
@@ -15,17 +14,17 @@ describe Rent do
       user_renting = FactoryGirl.create :user
 
       it 'should create a new rent' do
-        new_rent = Rent.rent_game game_to_rent, user_renting
+        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
         new_rent.should_not be_nil
       end
 
       it 'should have a deliverer scheduled' do
-        new_rent = Rent.rent_game game_to_rent, user_renting
+        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
         new_rent.deliverer.should_not be_nil
       end
 
       it 'should have a history register added' do
-        new_rent = Rent.rent_game game_to_rent, user_renting
+        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
         new_rent.history.should_not be_nil
       end
 

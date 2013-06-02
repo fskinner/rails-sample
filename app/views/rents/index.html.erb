@@ -8,6 +8,7 @@
 		<th>Jogo</th>
 		<th>Alugado em</th>
 		<th>Devolvido?</th>
+		<th>Devolução</th>
 
 		<% @rents.each do |rent| %> 
 			<tr>
@@ -18,6 +19,13 @@
 				<% else %>
 					<td>Nao</td>
 					<td><%= link_to "Devolver", return_game_rent_url(rent), method: 'put'%></td>
+				<% end %>
+				<% unless rent.devolution %>
+					<% 
+						days = Rent.calculate_rent_duration rent.date, DateTime.now
+						value = Rent.return_exchange days, rent.game.price_range
+					%>
+					<td><%= value %></td>
 				<% end %>
 		    </tr>
 		<% end %>

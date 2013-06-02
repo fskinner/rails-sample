@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
     t.float    "value"
     t.string   "transaction_type"
     t.string   "message"
+    t.string   "currency"
     t.integer  "rent_id"
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
@@ -100,7 +101,8 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
     t.string   "bank"
     t.string   "agency"
     t.string   "account"
-    t.integer  "shopcredit"
+    t.string   "role"
+    t.integer  "shopcredit",             :default => 0
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false

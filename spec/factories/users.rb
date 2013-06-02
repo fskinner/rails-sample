@@ -8,6 +8,7 @@ FactoryGirl.define do
     sequence(:city) {|n| "city-#{n}" }
     sequence(:state) {|n| "state-#{n}" }
     sequence(:zipcode) {|n| "zipcode-#{n}" }
+    sequence(:role) {|n| "user" }
 
   end
 end
