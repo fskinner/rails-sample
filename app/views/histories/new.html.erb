@@ -1,0 +1,14 @@
+<h3>Resgate de Shopcredits</h3>
+
+<div id="content_form_new">
+	<%= form_for (@history) do |f| %>
+	
+		<h3>Quanto deseja resgatar?</h3>
+    
+		<div class="field_form">
+			<label>Valor: </label>
+			<%= f.text_field :value %>
+		</div>
+		<input type="submit" value="Resgatar" id="buttom_submit"/>
+	<% end %>
+</div>

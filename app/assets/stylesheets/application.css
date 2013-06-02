@@ -168,6 +168,11 @@ body {
 	margin-top: 3px;
 }
 
+#sc_error {
+	font-size: 11px;
+	color: red;
+}
+
 #footer {
 	text-align: center;
 	color: white;
