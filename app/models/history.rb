@@ -11,6 +11,7 @@ class History < ActiveRecord::Base
 		if shopcredit >= 0
 			user.shopcredit = shopcredit
 			user.save
+			History.create value: value, transaction_type: "Debit", message: "resgate", currency: "credits", user_id: user.id
 			return user
 		end
 		return false
