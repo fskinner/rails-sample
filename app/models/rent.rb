@@ -27,7 +27,6 @@ class Rent < ActiveRecord::Base
 		value = Rent.return_exchange days, self.game.price_range
 		History.create value: value, transaction_type: "Credit", message: "devolucao", currency: "credits", rent_id: self.id, user_id: user.id
 		user.shopcredit = user.shopcredit + value.to_i
-		p user.shopcredit
 		user.save
 		self
 	end

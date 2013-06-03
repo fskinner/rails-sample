@@ -7,48 +7,48 @@ describe Rent do
 
   it { should validate_presence_of :initial_value }
 
-  describe '#rent_game' do
+  describe '#request_rent' do
     context 'given a game' do
 
       game_to_rent = FactoryGirl.create :game
       user_renting = FactoryGirl.create :user
 
       it 'should create a new rent' do
-        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
+        new_rent = Rent.request_rent game_to_rent, user_renting, "money"
         new_rent.should_not be_nil
       end
 
-      it 'should have a deliverer scheduled' do
-        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
-        new_rent.deliverer.should_not be_nil
+      it 'should have a blank date' do
+        new_rent = Rent.request_rent game_to_rent, user_renting, "money"
+        new_rent.date.should be_nil
       end
 
       it 'should have a history register added' do
-        new_rent = Rent.rent_game game_to_rent, user_renting, "money"
+        new_rent = Rent.request_rent game_to_rent, user_renting, "money"
         new_rent.history.should_not be_nil
       end
 
     end
 	end
 
-  describe '#return_game' do
+  describe '#request_return' do
     context 'given a game' do
 
       target_rent = FactoryGirl.create :rent
       user = FactoryGirl.create :user
 
       it 'should create a new devolution' do
-        target_rent.return_game user
+        target_rent.request_return user
         target_rent.devolution.should_not be_nil
       end
 
       it 'should set game availability to true' do
-        target_rent.return_game user
+        target_rent.request_return user
         target_rent.game.available.should be_true
       end
 
       it 'should have a history register added' do
-        target_rent.return_game user
+        target_rent.request_return user
         target_rent.history.should_not be_nil
       end
 
