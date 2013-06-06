@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
     t.string   "transaction_type"
     t.string   "message"
     t.string   "currency"
+    t.datetime "date"
     t.integer  "rent_id"
     t.integer  "user_id"
     t.datetime "created_at",       :null => false

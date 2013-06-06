@@ -7,16 +7,15 @@ class GamesController < ApplicationController
 
 	def rent
 		@game = Game.find params[:id]
-
-		# @game.rent current_user
-		# redirect_to root_url
 	end
 
 	def rent_money
 		@game = Game.find params[:id]
-		
-		@game.rent_money current_user
-		redirect_to root_url
+		if @game.rent_money current_user
+			redirect_to root_url
+		else
+			render 'rent'
+		end
 	end
 
 	def rent_credit

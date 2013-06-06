@@ -8,5 +8,6 @@ describe History do
   it { should validate_presence_of :transaction_type }
   it { should validate_presence_of :value }
   it { should validate_presence_of :message }
+  it { should validate_presence_of :date }
   
 end

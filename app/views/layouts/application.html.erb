@@ -23,8 +23,9 @@
       <% else %>
           <h3>Seja bem vindo! <%= link_to 'Faca seu login', new_user_session_path %></h3>
       <% end %>
-			<input type="text" id="textfield_procuraJogo" name="procuraJogo" placeholder="Digite o nome do jogo..." />
-			<input type="submit" id="button_procurar" value="Procurar" class="default_button" />
+      <h3><%= DateTime.now.strftime("Data: %d/%m/%Y") %></h3>
+			<!-- <input type="text" id="textfield_procuraJogo" name="procuraJogo" placeholder="Digite o nome do jogo..." />
+			<input type="submit" id="button_procurar" value="Procurar" class="default_button" /> -->
 		</div>
 	</div>
 	

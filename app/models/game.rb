@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
 	def rent_credit user
 		return false unless user.shopcredit
 		if user.shopcredit >= self.price_range.price
-			Rent.request_rent self, user, "money"
+			Rent.request_rent self, user, "credits"
 			self.available = false
 			if self.save
 				user.shopcredit -= self.price_range.price.to_i
@@ -27,7 +27,7 @@ class Game < ActiveRecord::Base
 	end
 
 	def rent_money user
-		Rent.request_rent self, user, "credits"
+		Rent.request_rent self, user, "money"
 		self.available = false
 		self.save
 	end

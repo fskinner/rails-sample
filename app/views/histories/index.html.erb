@@ -10,6 +10,7 @@
 		<th>Valor</th>
 		<th>Descricao</th>
 		<th>Jogo</th>
+		<th>Data</th>
 		<th>Identificador</th>
 
 		<% @histories.each do |history| %> 
@@ -35,6 +36,7 @@
 				
 				<td><%= history.message %></td>
 				<td><%= history.rent.game.name if history.rent %></td>
+				<td><%= history.date.strftime("%m/%d/%Y") %></td>
 				<td><%= history.rent.game.identifier if history.rent %></td>
 		    </tr>
 		<% end %>

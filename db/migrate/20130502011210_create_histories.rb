@@ -5,6 +5,7 @@ class CreateHistories < ActiveRecord::Migration
       t.string :transaction_type
       t.string :message
       t.string :currency
+      t.datetime :date
       t.references :rent
       t.references :user
 

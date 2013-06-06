@@ -9,6 +9,7 @@
 		<th>Alugado em</th>
 		<th>Devolvido?</th>
 		<th>Devolução</th>
+		<th>A receber</th>
 
 		<% @rents.each do |rent| %> 
 			<tr>
@@ -25,7 +26,7 @@
 						days = Rent.calculate_rent_duration rent.date, DateTime.now
 						value = Rent.return_exchange days, rent.game.price_range
 					%>
-					<td><%= value %></td>
+					<td><%= "R$#{value}0" %></td>
 				<% end %>
 		    </tr>
 		<% end %>
