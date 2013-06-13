@@ -11,6 +11,8 @@ class CreateHistories < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :histories, :rent_id
+    add_index :histories, :user_id
   end
 end

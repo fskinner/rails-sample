@@ -8,5 +8,8 @@ class CreateRents < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :rents, :game_id
+    add_index :rents, :user_id
   end
 end

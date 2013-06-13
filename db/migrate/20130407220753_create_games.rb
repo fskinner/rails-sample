@@ -12,5 +12,12 @@ class CreateGames < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :games, :price_range_id
+    add_index :games, :console_id
+    add_index :games, :gender_id
+    add_index :games, :rent_id
+    add_index :games, :devolution_id
+
   end
 end

@@ -21,18 +21,24 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
 
   create_table "deliverers", :force => true do |t|
     t.datetime "date"
-    t.integer  "rent_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "devolutions", :force => true do |t|
-    t.datetime "date"
-    t.integer  "midia_status"
+    t.boolean  "has_returned"
     t.integer  "rent_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "deliverers", ["rent_id"], :name => "index_deliverers_on_rent_id"
+
+  create_table "devolutions", :force => true do |t|
+    t.datetime "date"
+    t.integer  "midia_status"
+    t.boolean  "has_returned"
+    t.integer  "rent_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "devolutions", ["rent_id"], :name => "index_devolutions_on_rent_id"
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -46,6 +52,12 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "games", ["console_id"], :name => "index_games_on_console_id"
+  add_index "games", ["devolution_id"], :name => "index_games_on_devolution_id"
+  add_index "games", ["gender_id"], :name => "index_games_on_gender_id"
+  add_index "games", ["price_range_id"], :name => "index_games_on_price_range_id"
+  add_index "games", ["rent_id"], :name => "index_games_on_rent_id"
 
   create_table "genders", :force => true do |t|
     t.string   "name"
@@ -66,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
   end
 
   add_index "histories", ["rent_id"], :name => "index_histories_on_rent_id"
+  add_index "histories", ["user_id"], :name => "index_histories_on_user_id"
 
   create_table "payments", :force => true do |t|
     t.datetime "date"
@@ -92,6 +105,9 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "rents", ["game_id"], :name => "index_rents_on_game_id"
+  add_index "rents", ["user_id"], :name => "index_rents_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

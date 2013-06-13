@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'cancan'
 gem 'squeel'
+gem "foreigner"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,7 +36,6 @@ group :test do
 	gem 'simplecov'
 	gem 'simplecov-rcov'
   	gem 'factory_girl_rails', '~> 1.2'
-
 end
 
 # To use ActiveModel has_secure_password
