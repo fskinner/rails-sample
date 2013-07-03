@@ -10,6 +10,7 @@ gem 'devise'
 gem 'cancan'
 gem 'squeel'
 gem "foreigner"
+gem "rails-erd"
 
 # Gems used only for assets and not required
 # in production environments by default.

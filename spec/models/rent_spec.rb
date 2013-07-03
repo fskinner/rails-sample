@@ -7,6 +7,22 @@ describe Rent do
 
   it { should validate_presence_of :initial_value }
 
+  describe '#accept_rent' do
+    context 'given a rent' do
+
+      it 'should create a date' do
+        subject.accept_rent
+        subject.date.should_not be_nil
+      end
+
+      it 'should create a Deliverer date' do
+        subject.accept_rent
+        subject.deliverer.should_not be_nil
+      end
+
+    end
+  end
+
   describe '#request_rent' do
     context 'given a game' do
 
