@@ -11,5 +11,5 @@ Preço diário: <%= "R$#{@game.price_range.increment_value}0" if @game.price_ran
 
 <%= "R$#{@game.price_range.price}0 ou #{@game.price_range.price.to_i} ShopCredits"%> </br></br></br>
 
-<%= link_to "Pagar com dinheiro", rent_money_game_url(@game), method: 'put' %> </br></br>
+<%= link_to "Pagar com cartão de crédito", rent_money_game_url(@game), method: 'put' %> </br></br>
 <%= link_to "Pagar com shopcredit", rent_credit_game_url(@game), method: 'put' %>
