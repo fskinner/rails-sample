@@ -3,6 +3,7 @@ class CreateRents < ActiveRecord::Migration
     create_table :rents do |t|
       t.datetime :date
       t.float :initial_value
+      t.float :decrement_value
       t.references :user
       t.references :game
 

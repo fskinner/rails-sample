@@ -96,19 +96,19 @@ describe Rent do
       days = 1
 
       it 'should return 130' do
-        price_range = FactoryGirl.create :price_range, increment_value: 10, price: 150
+        price_range = FactoryGirl.create :price_range, decrement_value: 10, price: 150
         price = Rent.return_exchange days, price_range
         price.to_i.should be_equal 140
       end
 
       it 'should return 0' do
-        price_range = FactoryGirl.create :price_range, increment_value: 160, price: 150
+        price_range = FactoryGirl.create :price_range, decrement_value: 160, price: 150
         price = Rent.return_exchange days, price_range
         price.to_i.should be_equal 0
       end
 
       it 'should return 140 weeks' do
-        price_range = FactoryGirl.create :price_range, increment_value: 10, price: 150
+        price_range = FactoryGirl.create :price_range, decrement_value: 10, price: 150
         price = Rent.return_exchange 0, price_range
         price.to_i.should be_equal 150
       end

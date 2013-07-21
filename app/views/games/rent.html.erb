@@ -4,7 +4,7 @@
 Nome: <%= @game.name %> </br>
 Genero: <%= @game.gender.name if @game.gender %> </br>
 Console: <%= @game.console.name if @game.console %> </br>
-Preço diário: <%= "R$#{@game.price_range.increment_value}0" if @game.price_range %>
+Preço diário: <%= "R$#{@game.price_range.decrement_value}0" if @game.price_range %>
 </p>
 
 <h3> Desembolso </h3>

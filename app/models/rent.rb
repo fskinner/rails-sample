@@ -32,7 +32,7 @@ class Rent < ActiveRecord::Base
 	end
 
 	def self.return_exchange day_count, price_range
-		increment = price_range.increment_value
+		increment = price_range.decrement_value
 		game_price = price_range.price
 
 		value_to_pay = day_count * increment

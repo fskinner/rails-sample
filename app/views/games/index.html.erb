@@ -17,7 +17,7 @@
 				<td><%= game.console.name if game.console %></td>
 		    	<td><%= game.gender.name if game.gender %></td>
 		    	<td><%= "R$#{game.price_range.price}0" if game.price_range %></td>
-		    	<td><%= "R$#{game.price_range.increment_value}0" if game.price_range %></td>
+		    	<td><%= "R$#{game.price_range.decrement_value}0" if game.price_range %></td>
 		    	<% if game.available? %>
 					<td><%= link_to "Alugar", rent_game_url(game), method: 'get' %></td>
 				<% else %>

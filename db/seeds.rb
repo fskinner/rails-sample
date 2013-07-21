@@ -17,9 +17,9 @@ sport = Gender.create! name: "Esporte"
 puzzle = Gender.create! name: "Puzzle"
 adventure = Gender.create! name: "Aventura"
 
-price1 = PriceRange.create! category: "Lancamento", price: "150.0", increment_value: "4"
-price2 = PriceRange.create! category: "Atuais", price: "120.0", increment_value: "3"
-price3 = PriceRange.create! category: "Antigos", price: "90.0", increment_value: "2"
+price1 = PriceRange.create! category: "Lancamento", price: "150.0", decrement_value: "4"
+price2 = PriceRange.create! category: "Atuais", price: "120.0", decrement_value: "3"
+price3 = PriceRange.create! category: "Antigos", price: "90.0", decrement_value: "2"
 
 Game.create name: "Street Fighter", console: ps3, gender: fight, available: false, price_range: price2
 Game.create name: "Street Fighter", console: xbox, gender: fight, available: true, price_range: price2

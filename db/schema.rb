@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
 
   create_table "price_ranges", :force => true do |t|
     t.float    "price"
-    t.float    "increment_value"
+    t.float    "decrement_value"
     t.string   "category"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -100,10 +100,11 @@ ActiveRecord::Schema.define(:version => 20130502011210) do
   create_table "rents", :force => true do |t|
     t.datetime "date"
     t.float    "initial_value"
+    t.float    "decrement_value"
     t.integer  "user_id"
     t.integer  "game_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "rents", ["game_id"], :name => "index_rents_on_game_id"
