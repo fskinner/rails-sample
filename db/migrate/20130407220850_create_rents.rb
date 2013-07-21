@@ -5,12 +5,12 @@ class CreateRents < ActiveRecord::Migration
       t.float :initial_value
       t.float :decrement_value
       t.references :user
-      t.references :game
+      t.references :game_sample
 
       t.timestamps
     end
 
-    add_index :rents, :game_id
+    add_index :rents, :game_sample_id
     add_index :rents, :user_id
   end
 end

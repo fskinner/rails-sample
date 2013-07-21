@@ -26,7 +26,7 @@ describe Rent do
   describe '#request_rent' do
     context 'given a game' do
 
-      game_to_rent = FactoryGirl.create :game
+      game_to_rent = FactoryGirl.create :game_sample
       user_renting = FactoryGirl.create :user
 
       it 'should create a new rent' do
@@ -60,7 +60,7 @@ describe Rent do
 
       it 'should set game availability to true' do
         target_rent.request_return user
-        target_rent.game.available.should be_true
+        target_rent.game_sample.available.should be_true
       end
 
       it 'should have a history register added' do

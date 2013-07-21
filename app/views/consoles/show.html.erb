@@ -9,17 +9,19 @@
 		<th>Gênero</th>
 		<th>Desembolso</th>
 
-		<% @games.each do |game| %> 
-			<tr>
-				<td><%= game.name %></td>
-		    	<td><%= game.gender.name if game.gender %></td>
-		    	<td><%= "R$#{game.price_range.price}0" if game.price_range %></td>
-		    	<% if game.available? %>
-		    		<td><%= link_to "Alugar", rent_game_url(game), method: 'get' %></td>
-		    	<% else %>
-		    		<td> Alugado </td>
-		    	<% end %>	
-		    </tr>
+		<% @games.each do |game| %>
+			<% game.game_samples.each do |game_sample| %>
+				<tr>
+					<td><%= game.name %></td>
+			    	<td><%= game.gender.name if game.gender %></td>
+			    	<td><%= "R$#{game.price_range.price}0" if game.price_range %></td>
+			    	<% if game_sample.available? %>
+			    		<td><%= link_to "Alugar", rent_game_sample_url(game_sample), method: 'get' %></td>
+			    	<% else %>
+			    		<td> Alugado </td>
+			    	<% end %>
+			    </tr>
+		    <% end %>
 		<% end %>
 	</table>
 <% end %>

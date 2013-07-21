@@ -15,7 +15,7 @@ describe Devolution do
 
       it 'should set game availability to true' do
         subject.confirm_return
-        subject.rent.game.available.should be_true
+        subject.rent.game_sample.available.should be_true
       end
 
     end

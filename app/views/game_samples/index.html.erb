@@ -1,0 +1,29 @@
+<h3><%= "Lista de todos os jogos disponiveis" %></h3>
+
+<% if @game_samples.empty? %>
+	<p><b>Não há nenhum jogo cadastrado no site</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Nome</th>
+		<th>Console</th>
+		<th>Gênero</th>
+		<th>Desembolso</th>
+		<th>Preço diário</th>
+
+		<% @game_samples.each do |game_sample| %> 
+			<tr>
+				<td><%= game_sample.game.name %></td>
+				<td><%= game_sample.game.console.name if game_sample.game.console %></td>
+		    	<td><%= game_sample.game.gender.name if game_sample.game.gender %></td>
+		    	<td><%= "R$#{game_sample.game.price_range.price}0" if game_sample.game.price_range %></td>
+		    	<td><%= "R$#{game_sample.game.price_range.decrement_value}0" if game_sample.game.price_range %></td>
+		    	<% if game_sample.available? %>
+					<td><%= link_to "Alugar", rent_game_sample_url(game_sample), method: 'get' %></td>
+				<% else %>
+		    		<td> Alugado </td>
+				<% end %>
+		    </tr>
+		<% end %>
+	</table>
+<% end %>

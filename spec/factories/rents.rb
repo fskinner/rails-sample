@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:initial_value) {|n| n }
     sequence(:decrement_value) {|n| n }
     sequence(:date) {|n| DateTime.now }
-    game
+    game_sample
     user
   end
 end

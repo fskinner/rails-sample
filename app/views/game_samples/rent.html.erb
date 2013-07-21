@@ -1,0 +1,15 @@
+<h3>Aluguel de Jogo</h3>
+
+<p>
+Nome: <%= @game_sample.game.name %> </br>
+Genero: <%= @game_sample.game.gender.name if @game_sample.game.gender %> </br>
+Console: <%= @game_sample.game.console.name if @game_sample.game.console %> </br>
+Preço diário: <%= "R$#{@game_sample.game.price_range.decrement_value}0" if @game_sample.game.price_range %>
+</p>
+
+<h3> Desembolso </h3>
+
+<%= "R$#{@game_sample.game.price_range.price}0 ou #{@game_sample.game.price_range.price.to_i} ShopCredits"%> </br></br></br>
+
+<%= link_to "Pagar com cartão de crédito", rent_money_game_sample_url(@game_sample), method: 'put' %> </br></br>
+<%= link_to "Pagar com shopcredit", rent_credit_game_sample_url(@game_sample), method: 'put' %>

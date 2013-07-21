@@ -1,15 +1,15 @@
-<h3><%= "Lista de todos os consoles" %></h3>
+<h3><%= "Lista de todas as faixas de preço" %></h3>
 
-<% if @consoles.empty? %>
-	<p><b>Não há nenhum console cadastrado no site</b></p>
+<% if @price_ranges.empty? %>
+	<p><b>Não há nenhuma faixa de preço cadastrada no site</b></p>
 
 <% else %>
 	<table class="table_game">
 		<th>Nome</th>
 
-		<% @consoles.each do |console| %> 
+		<% @price_ranges.each do |price_range| %> 
 			<tr>
-				<td><%= console.name %></td>
+				<td><%= price_range.category %></td>
 				<% if current_user.role == "admin" %>
 					<td><%= link_to "Editar", '#' %></td>
 					<td><%= link_to "Deletar", '#' %></td>

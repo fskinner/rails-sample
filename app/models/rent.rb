@@ -1,5 +1,5 @@
 class Rent < ActiveRecord::Base
-	belongs_to :game
+	belongs_to :game_sample
 	belongs_to :user
 	has_many :payments
 	has_one :devolution
@@ -8,9 +8,9 @@ class Rent < ActiveRecord::Base
 
 	validates :initial_value, :presence => true
 
-	def self.request_rent game, user, currency
-		rent = Rent.create initial_value: game.price_range.price, decrement_value: game.price_range.decrement_value, game_id: game.id, user_id: user.id
-		History.create date: DateTime.now, value: game.price_range.price, transaction_type: "Debt", message: "aluguel", currency: currency, rent_id: rent.id, user_id: user.id
+	def self.request_rent game_sample, user, currency
+		rent = Rent.create initial_value: game_sample.game.price_range.price, decrement_value: game_sample.game.price_range.decrement_value, game_sample_id: game_sample.id, user_id: user.id
+		History.create date: DateTime.now, value: game_sample.game.price_range.price, transaction_type: "Debt", message: "aluguel", currency: currency, rent_id: rent.id, user_id: user.id
 		rent
 	end
 

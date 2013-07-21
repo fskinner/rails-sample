@@ -10,6 +10,10 @@
 		<% @genders.each do |gender| %> 
 			<tr>
 				<td><%= link_to gender.name,  gender %></td>
+				<% if current_user.role == "admin" %>
+					<td><%= link_to "Editar", '#' %></td>
+					<td><%= link_to "Deletar", '#' %></td>
+				<% end %>
 		    </tr>
 		<% end %>
 	</table>

@@ -6,9 +6,13 @@ AlugSeguro::Application.routes.draw do
 
   resources :consoles
 
+  resources :price_ranges
+
   resources :users
 
-  resources :games do
+  resources :games
+
+  resources :game_samples do
     member do
       get 'rent'
       put 'rent_money'

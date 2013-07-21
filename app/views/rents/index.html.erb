@@ -13,7 +13,7 @@
 
 		<% @rents.each do |rent| %> 
 			<tr>
-				<td><%= rent.game.name %></td>
+				<td><%= rent.game_sample.game.name %></td>
 				<td><%= rent.date.strftime("%m/%d/%Y") %></td>
 				<% if rent.devolution %>
 					<td>Sim</td>
@@ -24,7 +24,7 @@
 				<% unless rent.devolution %>
 					<% 
 						days = Rent.calculate_rent_duration rent.date, DateTime.now
-						value = Rent.return_exchange days, rent.game.price_range
+						value = Rent.return_exchange days, rent
 					%>
 					<td><%= "R$#{value}0" %></td>
 				<% end %>
