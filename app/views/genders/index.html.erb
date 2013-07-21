@@ -9,7 +9,7 @@
 
 		<% @genders.each do |gender| %> 
 			<tr>
-				<td><%= gender.name %></td>
+				<td><%= link_to gender.name,  gender %></td>
 		    </tr>
 		<% end %>
 	</table>

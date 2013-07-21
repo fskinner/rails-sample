@@ -1,0 +1,25 @@
+<h3><%= "Lista de Jogos de #{@gender.name}" %></h3>
+
+<% if @games.empty? %>
+	<p><b>Não há nenhum jogo neste genero</b></p>
+
+<% else %>
+	<table class="table_game">
+		<th>Nome</th>
+		<th>Console</th>
+		<th>Desembolso</th>
+
+		<% @games.each do |game| %> 
+			<tr>
+				<td><%= game.name %></td>
+		    	<td><%= game.console.name if game.console %></td>
+		    	<td><%= "R$#{game.price_range.price}0" if game.price_range %></td>
+		    	<% if game.available? %>
+		    		<td><%= link_to "Alugar", rent_game_url(game), method: 'get' %></td>
+		    	<% else %>
+		    		<td> Alugado </td>
+		    	<% end %>	
+		    </tr>
+		<% end %>
+	</table>
+<% end %>
