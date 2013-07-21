@@ -9,7 +9,7 @@ class Rent < ActiveRecord::Base
 	validates :initial_value, :presence => true
 
 	def self.request_rent game, user, currency
-		rent = Rent.create initial_value: game.price_range.price, game_id: game.id, user_id: user.id
+		rent = Rent.create initial_value: game.price_range.price, decrement_value: game.price_range.decrement_value, game_id: game.id, user_id: user.id
 		History.create date: DateTime.now, value: game.price_range.price, transaction_type: "Debt", message: "aluguel", currency: currency, rent_id: rent.id, user_id: user.id
 		rent
 	end
@@ -24,16 +24,16 @@ class Rent < ActiveRecord::Base
 	def request_return user
 		Devolution.create rent_id: self.id
 		days = Rent.calculate_rent_duration self.date, DateTime.now
-		value = Rent.return_exchange days, self.game.price_range
+		value = Rent.return_exchange days, self
 		History.create date: DateTime.now, value: value, transaction_type: "Credit", message: "devolucao", currency: "credits", rent_id: self.id, user_id: user.id
 		user.shopcredit = user.shopcredit + value.to_i
 		user.save
 		self
 	end
 
-	def self.return_exchange day_count, price_range
-		increment = price_range.decrement_value
-		game_price = price_range.price
+	def self.return_exchange day_count, rent
+		increment = rent.decrement_value
+		game_price = rent.initial_value
 
 		value_to_pay = day_count * increment
 		exchange_value = game_price - value_to_pay
