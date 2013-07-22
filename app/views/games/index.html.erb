@@ -1,5 +1,9 @@
 <h3><%= "Lista de todos os jogos disponiveis" %></h3>
 
+<% if current_user.role == "admin" %>
+	<%= link_to "Criar novo", new_game_url %>
+<% end %>
+
 <% if @games.empty? %>
 	<p><b>Não há nenhum jogo cadastrado no site</b></p>
 

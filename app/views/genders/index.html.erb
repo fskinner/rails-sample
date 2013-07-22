@@ -1,5 +1,9 @@
 <h3><%= "Lista de todos os generos" %></h3>
 
+<% if current_user.role == "admin" %>
+	<%= link_to "Criar novo", new_gender_url %>
+<% end %>
+
 <% if @genders.empty? %>
 	<p><b>Não há nenhum genero cadastrado no site</b></p>
 

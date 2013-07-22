@@ -1,5 +1,9 @@
 <h3><%= "Lista de todos os consoles" %></h3>
 
+<% if current_user.role == "admin" %>
+	<%= link_to "Criar novo", new_console_url %>
+<% end %>
+
 <% if @consoles.empty? %>
 	<p><b>Não há nenhum console cadastrado no site</b></p>
 
@@ -17,4 +21,7 @@
 		    </tr>
 		<% end %>
 	</table>
+
+
+
 <% end %>

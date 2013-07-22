@@ -6,7 +6,7 @@ class GameSample < ActiveRecord::Base
   before_save :generate_identifier
 
 	def generate_identifier
-		self.identifier = Digest::MD5.hexdigest("#{self.game.name}#{DateTime.now}")
+		self.identifier = Digest::MD5.hexdigest("#{self.game.id}#{DateTime.now}")
 	end	
 	def rent_credit user
 		return false unless user.shopcredit

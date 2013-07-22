@@ -31,11 +31,11 @@
 		<ul>
       <% if user_signed_in? %>
         <% if current_user.role == "admin" %>
-          <li><%= link_to "Alugueis (#{Rent.where{date == nil}.count})", admin_rents_url %></li>
-          <li><%= link_to "Devolucoes (#{Devolution.where{date == nil}.count})", devolution_rents_url %></li>
           <li><%= link_to "Consoles", consoles_url %></li>
           <li><%= link_to "Generos", genders_url %></li>
-          <li><%= link_to "Faixas de Preço", price_ranges_url %></li>
+          <li><%= link_to "Preços", price_ranges_url %></li>
+          <li><%= link_to "Jogos", games_url %></li>
+          <li><%= link_to "Exemplares", game_samples_url %></li>
 
         <% else %>
           <li><%= link_to 'Home', root_url %></li>
@@ -54,14 +54,19 @@
 
   <div id="content">
     <div id="central_content">
-      <% if user_signed_in? && current_user.role == nil %>
+      <% if user_signed_in? %>
         <div id="top_central_content">
               <ul>
+                <% if current_user.role == "admin" %>
+                  <li><%= link_to "Aluguéis (#{Rent.where{date == nil}.count})", admin_rents_url %></li>
+                  <li><%= link_to "Devoluções (#{Devolution.where{date == nil}.count})", devolution_rents_url %></li>
+                <% else %>
                 <!-- <li><%= link_to "Perfil", current_user %></li> -->
-                <% Console.all.each do |console| %>
-                  <li><%= link_to console.name,  console %></li>
-                <% end %>
+                  <% Console.all.each do |console| %>
+                    <li><%= link_to console.name,  console %></li>
+                  <% end %>
                 <!-- <li><%= link_to "Sair", destroy_user_session_url, method: :delete %></li> -->
+                <% end %>
               </ul>
         </div>
       <% else %>

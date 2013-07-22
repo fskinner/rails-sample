@@ -1,5 +1,9 @@
 <h3><%= "Lista de todas as faixas de preço" %></h3>
 
+<% if current_user.role == "admin" %>
+	<%= link_to "Criar novo", new_price_range_url %>
+<% end %>
+
 <% if @price_ranges.empty? %>
 	<p><b>Não há nenhuma faixa de preço cadastrada no site</b></p>
 

@@ -24,23 +24,27 @@ game8 = Game.create name: "Uncharted", console: ps3, gender: shooter, price_rang
 game9 = Game.create name: "Gears of War", console: xbox, gender: shooter, price_range: price1
 
 GameSample.create available: true, game: game1
+sleep 1
 GameSample.create available: true, game: game1
-
+sleep 1
 GameSample.create available: true, game: game2
-
+sleep 1
 GameSample.create available: true, game: game3
-
+sleep 1
 GameSample.create available: true, game: game4
-
+sleep 1
 GameSample.create available: true, game: game5
+sleep 1
 GameSample.create available: true, game: game5
+sleep 1
 GameSample.create available: true, game: game5
-
+sleep 1
 GameSample.create available: true, game: game7
-
+sleep 1
 GameSample.create available: true, game: game8
+sleep 1
 GameSample.create available: true, game: game8
-
+sleep 1
 GameSample.create available: true, game: game9
 
 User.create name: "Admin", email: "admin@admin.com", password: "123123", street: "admin", city: "admin", state: "admin", zipcode: "admin", role: "admin"

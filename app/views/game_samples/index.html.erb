@@ -1,27 +1,39 @@
-<h3><%= "Lista de todos os jogos disponiveis" %></h3>
+<h3><%= "Lista de todos os exemplares disponiveis" %></h3>
+
+<% if current_user.role == "admin" %>
+	<%= link_to "Criar novo", new_game_sample_url %>
+<% end %>
 
 <% if @game_samples.empty? %>
-	<p><b>Não há nenhum jogo cadastrado no site</b></p>
+	<p><b>Não há nenhum exemplar cadastrado no site</b></p>
 
 <% else %>
 	<table class="table_game">
 		<th>Nome</th>
-		<th>Console</th>
-		<th>Gênero</th>
-		<th>Desembolso</th>
-		<th>Preço diário</th>
+		<% if current_user.role == "admin" %>
+			<th>Identificador</th>
+		<% else %>
+			<th>Console</th>
+			<th>Gênero</th>
+			<th>Desembolso</th>
+			<th>Preço diário</th>
+		<% end %>
 
 		<% @game_samples.each do |game_sample| %> 
 			<tr>
 				<td><%= game_sample.game.name %></td>
-				<td><%= game_sample.game.console.name if game_sample.game.console %></td>
-		    	<td><%= game_sample.game.gender.name if game_sample.game.gender %></td>
-		    	<td><%= "R$#{game_sample.game.price_range.price}0" if game_sample.game.price_range %></td>
-		    	<td><%= "R$#{game_sample.game.price_range.decrement_value}0" if game_sample.game.price_range %></td>
-		    	<% if game_sample.available? %>
-					<td><%= link_to "Alugar", rent_game_sample_url(game_sample), method: 'get' %></td>
+				<% if current_user.role == "admin" %>
+					<td><%= game_sample.identifier %></td>
 				<% else %>
-		    		<td> Alugado </td>
+					<td><%= game_sample.game.console.name if game_sample.game.console %></td>
+			    	<td><%= game_sample.game.gender.name if game_sample.game.gender %></td>
+			    	<td><%= "R$#{game_sample.game.price_range.price}0" if game_sample.game.price_range %></td>
+			    	<td><%= "R$#{game_sample.game.price_range.decrement_value}0" if game_sample.game.price_range %></td>
+			    	<% if game_sample.available? %>
+						<td><%= link_to "Alugar", rent_game_sample_url(game_sample), method: 'get' %></td>
+					<% else %>
+			    		<td> Alugado </td>
+					<% end %>
 				<% end %>
 		    </tr>
 		<% end %>
