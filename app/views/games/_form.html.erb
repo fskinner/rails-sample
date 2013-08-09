@@ -1,0 +1,14 @@
+<%= form_for @game do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br/>
+	<br/>
+	<%= f.label :console %>
+	<%= f.collection_select :console_id, Console.all, :id, :name %>
+
+	<%= f.label :gender %>
+	<%= f.collection_select :gender_id, Gender.all, :id, :name %>
+	<br/>
+	<br/>
+	<%= f.submit 'Salvar', :title => 'Salvar' %>
+<% end %>

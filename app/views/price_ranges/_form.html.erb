@@ -1,0 +1,15 @@
+<%= form_for @price_range do |f| %>
+	<%= f.label :category %>
+	<%= f.text_field :category %>
+	<br/>
+	<br/>
+	<%= f.label :price %>
+	<%= f.text_field :price %>
+	<br/>
+	<br/>
+	<%= f.label :decrement_value %>
+	<%= f.text_field :decrement_value %>
+	<br/>
+	<br/>
+	<%= f.submit 'Salvar', :title => 'Salvar' %>
+<% end %>

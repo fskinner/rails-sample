@@ -1,6 +1,20 @@
 class GameSamplesController < ApplicationController
 	before_filter :authenticate_user!
 
+	def new
+		@game_sample = GameSample.new
+	end
+
+	def create
+		@game_sample = GameSample.new params[:game_sample]
+		@game_sample.available = true
+		if @game_sample.save
+			redirect_to game_samples_path
+		else
+			return 'new'
+		end
+	end
+
 	def index
 		@game_samples = GameSample.where available: true
 	end
