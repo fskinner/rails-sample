@@ -19,7 +19,10 @@
 				<td><%= game.name %></td>
 				<td><%= game.console.name if game.console %></td>
 		    	<td><%= game.gender.name if game.gender %></td>
-		    	
+		    	<td><%= link_to "Editar", edit_game_url(game) %></td>
+				<% if game.game_samples.empty? %>
+					<td><%= link_to "Deletar", game, :method => :delete %></td>
+				<% end %>
 		    </tr>
 		<% end %>
 	</table>

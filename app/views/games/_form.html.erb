@@ -1,12 +1,12 @@
 <%= form_for @game do |f| %>
-	<%= f.label :name %>
+	<%= f.label :nome %>
 	<%= f.text_field :name %>
 	<br/>
 	<br/>
 	<%= f.label :console %>
 	<%= f.collection_select :console_id, Console.all, :id, :name %>
 
-	<%= f.label :gender %>
+	<%= f.label :genero %>
 	<%= f.collection_select :gender_id, Gender.all, :id, :name %>
 	<br/>
 	<br/>

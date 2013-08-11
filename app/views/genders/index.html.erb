@@ -15,8 +15,10 @@
 			<tr>
 				<td><%= link_to gender.name,  gender %></td>
 				<% if current_user.role == "admin" %>
-					<td><%= link_to "Editar", '#' %></td>
-					<td><%= link_to "Deletar", '#' %></td>
+					<td><%= link_to "Editar", edit_gender_url(gender) %></td>
+					<% if gender.games.empty? %>
+						<td><%= link_to "Deletar", gender, :method => :delete %></td>
+					<% end %>
 				<% end %>
 		    </tr>
 		<% end %>

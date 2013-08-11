@@ -5,6 +5,19 @@ class GameSamplesController < ApplicationController
 		@game_sample = GameSample.new
 	end
 
+	def edit
+		@game_sample = GameSample.find params[:id]
+	end
+
+	def update
+		@game_sample = GameSample.find params[:id]
+		if @game_sample.update_attributes params[:game_sample]
+			redirect_to game_samples_path
+		else
+			return 'edit'
+		end
+  	end
+
 	def create
 		@game_sample = GameSample.new params[:game_sample]
 		@game_sample.available = true
@@ -18,6 +31,12 @@ class GameSamplesController < ApplicationController
 	def index
 		@game_samples = GameSample.where available: true
 	end
+
+	def destroy
+		@game_sample = GameSample.find params[:id]
+		@game_sample.destroy
+    	redirect_to game_samples_path
+  	end
 
 	def rent
 		@game_sample = GameSample.find params[:id]

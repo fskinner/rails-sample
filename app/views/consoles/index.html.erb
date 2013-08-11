@@ -15,8 +15,10 @@
 			<tr>
 				<td><%= console.name %></td>
 				<% if current_user.role == "admin" %>
-					<td><%= link_to "Editar", '#' %></td>
-					<td><%= link_to "Deletar", '#' %></td>
+					<td><%= link_to "Editar", edit_console_url(console) %></td>
+					<% if console.games.empty? %>
+						<td><%= link_to "Deletar", console, :method => :delete %></td>
+					<% end %>
 				<% end %>
 		    </tr>
 		<% end %>

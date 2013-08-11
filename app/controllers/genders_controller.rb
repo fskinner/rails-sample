@@ -5,6 +5,19 @@ class GendersController < ApplicationController
 		@gender = Gender.new
 	end
 
+	def edit
+		@gender = Gender.find params[:id]
+	end
+
+	def update
+		@gender = Gender.find params[:id]
+		if @gender.update_attributes params[:gender]
+			redirect_to genders_path
+		else
+			return 'edit'
+		end
+  	end
+
 	def create
 		@gender = Gender.new params[:gender]
 		if @gender.save
@@ -13,6 +26,12 @@ class GendersController < ApplicationController
 			return 'new'
 		end
 	end
+
+	def destroy
+		@gender = Gender.find params[:id]
+		@gender.destroy
+    	redirect_to genders_path
+  	end
 
 	def show
 		@gender = Gender.find params[:id]

@@ -1,5 +1,5 @@
 <%= form_for @game_sample do |f| %>
-	<%= f.label :game %>
+	<%= f.label :jogo %>
 	<%= f.collection_select :game_id, Game.all, :id, :name %>
 	<br/>
 	<br/>

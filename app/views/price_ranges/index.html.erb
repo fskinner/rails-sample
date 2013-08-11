@@ -15,8 +15,8 @@
 			<tr>
 				<td><%= price_range.category %></td>
 				<% if current_user.role == "admin" %>
-					<td><%= link_to "Editar", '#' %></td>
-					<td><%= link_to "Deletar", '#' %></td>
+					<td><%= link_to "Editar", edit_price_range_url(price_range) %></td>
+					<td><%= link_to "Deletar", price_range, :method => :delete %></td>
 				<% end %>
 		    </tr>
 		<% end %>

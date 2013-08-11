@@ -35,6 +35,10 @@
 			    		<td> Alugado </td>
 					<% end %>
 				<% end %>
+				<td><%= link_to "Editar", edit_game_sample_url(game_sample) %></td>
+				<% if game_sample.rents.empty? %>
+					<td><%= link_to "Deletar", game_sample, :method => :delete %></td>
+				<% end %>
 		    </tr>
 		<% end %>
 	</table>
